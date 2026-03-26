@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerams Chess Game</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="page">
+    <section id="lobby-screen" class="lobby-screen">
+      <div class="lobby-card">
+        <p class="eyebrow">Gerams Chess Game</p>
+        <h1>Choose how you want to enter</h1>
+        <p class="lead">Create a room or join an existing one. Nothing else appears until you are actually in a game.</p>
+
+        <div class="lobby-block">
+          <p class="section-label">Create Room</p>
+          <label class="field-label">Play as</label>
+          <div class="color-picker">
+            <label class="color-choice">
+              <input type="radio" name="owner-color" value="white" checked>
+              <span>White</span>
+            </label>
+            <label class="color-choice">
+              <input type="radio" name="owner-color" value="black">
+              <span>Black</span>
+            </label>
+          </div>
+          <button id="create-room-button" class="primary wide-button">Create Room</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="lobby-block">
+          <p class="section-label">Join Room</p>
+          <div class="join-row">
+            <input id="room-input" type="text" maxlength="12" placeholder="Enter room code">
+            <button id="join-room-button">Join</button>
+          </div>
+        </div>
+
+        <p id="error-text" class="error-text"></p>
+      </div>
+    </section>
+
+    <section id="game-screen" class="game-shell hidden">
+      <div class="board-panel">
+        <div class="board-topbar">
+          <div>
+            <p class="panel-label">Room</p>
+            <h2 id="room-code">Not connected</h2>
+          </div>
+          <div class="topbar-actions">
+            <button id="copy-link-button" class="ghost" disabled>Copy Link</button>
+            <button id="copy-code-button" class="ghost" disabled>Copy Code</button>
+          </div>
+        </div>
+
+        <div class="clock-strip">
+          <div class="clock-card">
+            <span>White</span>
+            <strong id="white-clock">05:00</strong>
+          </div>
+          <div class="clock-card">
+            <span>Black</span>
+            <strong id="black-clock">05:00</strong>
+          </div>
+        </div>
+
+        <div id="board" class="board"></div>
+      </div>
+
+      <aside class="sidebar">
+        <section class="card">
+          <p class="panel-label">Game</p>
+          <h3 id="connection-status">Disconnected</h3>
+          <p id="status-text" class="body-text">Waiting for a room.</p>
+        </section>
+
+        <section class="card compact-card">
+          <div class="player-row">
+            <span class="chip white-chip"></span>
+            <span id="white-name">White</span>
+          </div>
+          <div class="player-row">
+            <span class="chip black-chip"></span>
+            <span id="black-name">Black</span>
+          </div>
+          <p id="player-role" class="helper-text">Spectator</p>
+        </section>
+
+        <section id="cheat-panel" class="card">
+          <p class="panel-label">Cheats</p>
+          <div class="cheat-actions">
+            <button id="remove-piece-button">Remove Piece</button>
+            <button id="steal-time-button">Steal 15s</button>
+            <button id="jumpscare-button">Jumpscare</button>
+          </div>
+          <p id="cheat-help" class="helper-text">Choose remove, then click an opponent piece.</p>
+        </section>
+
+        <section class="card compact-card">
+          <label class="field-label" for="player-name">Name</label>
+          <div class="name-row">
+            <input id="player-name" type="text" maxlength="20" placeholder="Your name">
+            <button id="save-name-button">Save</button>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <div id="jumpscare-overlay" class="jumpscare-overlay hidden" aria-hidden="true">
+    <div class="jumpscare-face">
+      <div class="jumpscare-eyes">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="jumpscare-mouth"></div>
+    </div>
+    <p id="jumpscare-text" class="jumpscare-text hidden">Click anywhere to enable sound</p>
+  </div>
+
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
