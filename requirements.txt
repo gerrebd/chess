@@ -1,0 +1,4 @@
+fastapi==0.135.2
+python-chess==1.999
+uvicorn==0.42.0
+websockets==16.0

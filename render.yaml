@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: gerams-chess-game
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn webapp.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    healthCheckPath: /healthz

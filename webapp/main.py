@@ -279,6 +279,11 @@ async def root() -> FileResponse:
     return FileResponse(STATIC_DIR / "index.html")
 
 
+@app.get("/healthz")
+async def healthz() -> dict:
+    return {"status": "ok"}
+
+
 @app.post("/api/rooms")
 async def create_room(payload: CreateRoomRequest) -> dict:
     owner_color = payload.owner_color.lower()

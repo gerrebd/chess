@@ -42,3 +42,36 @@ http://127.0.0.1:8000
 - reconnect support
 - persistent rooms or match history
 - deployment to a public server
+
+## Deployment
+
+This repo is now ready for simple cloud deployment.
+
+### Render
+
+The repo includes [render.yaml](/Users/geramgrigoryan/chess/render.yaml), so you can:
+
+1. Push the latest code to GitHub
+2. In Render, choose `New +` -> `Blueprint`
+3. Select this GitHub repo
+4. Render will use:
+   - build command: `pip install -r requirements.txt`
+   - start command: `uvicorn webapp.main:app --host 0.0.0.0 --port $PORT`
+5. Deploy and open the generated public URL
+
+### Railway
+
+The repo also includes [railway.json](/Users/geramgrigoryan/chess/railway.json).
+
+1. Create a new Railway project from GitHub
+2. Select this repo
+3. Railway will run:
+   - `uvicorn webapp.main:app --host 0.0.0.0 --port $PORT`
+4. Open the generated domain after deploy
+
+### Files used for deployment
+
+- [requirements.txt](/Users/geramgrigoryan/chess/requirements.txt)
+- [render.yaml](/Users/geramgrigoryan/chess/render.yaml)
+- [railway.json](/Users/geramgrigoryan/chess/railway.json)
+- [webapp/main.py](/Users/geramgrigoryan/chess/webapp/main.py) with `/healthz`
